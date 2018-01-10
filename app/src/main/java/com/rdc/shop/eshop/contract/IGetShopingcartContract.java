@@ -14,13 +14,13 @@ public interface IGetShopingcartContract {
     }
 
     interface View {
-        void onGetShopingcartSuccess(List<Store> storeList, Map<Integer, List<Good>> goodListMap);
+        void onGetShopingcartSuccess(List<Shoppingcart> shoppingcartList, List<Store> storeList, Map<Integer, List<Good>> goodListMap);
         void onGetShoppingcartFailed(String response);
     }
 
     interface Presenter {
         void getShoppingcart(String userId);
-        void onGetShopingcartSuccess(List<Store> storeList, Map<Integer, List<Good>> goodListMap);
+        void onGetShopingcartSuccess(List<Shoppingcart> shoppingcartList, List<Store> storeList, Map<Integer, List<Good>> goodListMap);
         void onGetShoppingcartFailed(String response);
     }
 

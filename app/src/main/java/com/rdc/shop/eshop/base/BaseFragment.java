@@ -1,11 +1,11 @@
 package com.rdc.shop.eshop.base;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +15,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment {
-    protected BaseActivity mBaseActivity;  //贴附的activity,Fragment中可能用到
+    protected AppCompatActivity mBaseActivity;  //贴附的activity,Fragment中可能用到
     protected View mRootView;           //根view
     Unbinder mUnbinder;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mBaseActivity = (BaseActivity) getActivity();
+        mBaseActivity = (AppCompatActivity) getActivity();
     }
 
     @Nullable

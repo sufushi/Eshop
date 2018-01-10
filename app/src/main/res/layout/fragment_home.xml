@@ -2,7 +2,8 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <in.srain.cube.views.ptr.PtrClassicFrameLayout
         android:id="@+id/ptr_classic_frame_layout"
@@ -27,7 +28,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_toolbar_height"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp">
 
         <include layout="@layout/layout_search"/>
 

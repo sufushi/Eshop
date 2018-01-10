@@ -1,6 +1,7 @@
 package com.rdc.shop.eshop.presenter;
 
 import com.rdc.shop.eshop.bean.Good;
+import com.rdc.shop.eshop.bean.Shoppingcart;
 import com.rdc.shop.eshop.bean.entity.Store;
 import com.rdc.shop.eshop.contract.IGetShopingcartContract;
 import com.rdc.shop.eshop.model.GetShoppingcartModelImpl;
@@ -24,8 +25,8 @@ public class GetShoppingcartPresenterImpl implements IGetShopingcartContract.Pre
     }
 
     @Override
-    public void onGetShopingcartSuccess(List<Store> storeList, Map<Integer, List<Good>> goodListMap) {
-        mView.onGetShopingcartSuccess(storeList, goodListMap);
+    public void onGetShopingcartSuccess(List<Shoppingcart> shoppingcartList, List<Store> storeList, Map<Integer, List<Good>> goodListMap) {
+        mView.onGetShopingcartSuccess(shoppingcartList, storeList, goodListMap);
     }
 
     @Override

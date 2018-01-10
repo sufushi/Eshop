@@ -14,7 +14,7 @@ public class UploadBatchPresenterImpl<T extends BmobObject> implements IUploadBa
 
     public UploadBatchPresenterImpl(IUploadBatchContract.View view) {
         mView = view;
-        mModel = new UploadBatchModelImpl();
+        mModel = new UploadBatchModelImpl<>();
     }
 
     @Override

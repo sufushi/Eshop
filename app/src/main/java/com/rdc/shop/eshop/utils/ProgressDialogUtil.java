@@ -6,12 +6,15 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.rdc.shop.eshop.view.LoadingDialog;
+
 import static com.rdc.shop.eshop.constant.Constant.GRAVITY_BOTTOM;
 import static com.rdc.shop.eshop.constant.Constant.GRAVITY_CENTER;
 import static com.rdc.shop.eshop.constant.Constant.GRAVITY_TOP;
 
 public class ProgressDialogUtil {
     private static ProgressDialog sProgressDialog;
+    private static LoadingDialog sLoadingDialog;
     private static boolean isShow = false;
 
     public static void showProgressDialog(Context context, CharSequence msg) {
@@ -19,6 +22,13 @@ public class ProgressDialogUtil {
         sProgressDialog.setMessage(msg);
         sProgressDialog.setCancelable(true);
         sProgressDialog.show();
+        isShow = true;
+    }
+
+    public static void showLoadingDislog(Context context, String msg) {
+        sLoadingDialog = new LoadingDialog(context);
+        sLoadingDialog.setMessage(msg);
+        sLoadingDialog.show();
         isShow = true;
     }
 
@@ -55,6 +65,10 @@ public class ProgressDialogUtil {
     public static void dismiss() {
         if (sProgressDialog != null && sProgressDialog.isShowing()) {
             sProgressDialog.dismiss();
+            isShow = false;
+        }
+        if (sLoadingDialog != null && sLoadingDialog.isShowing()) {
+            sLoadingDialog.dismiss();
             isShow = false;
         }
     }

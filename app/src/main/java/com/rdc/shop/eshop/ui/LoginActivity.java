@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.rdc.shop.eshop.R;
 import com.rdc.shop.eshop.MainActivity;
 
-import com.rdc.shop.eshop.base.BaseActivity;
+import com.rdc.shop.eshop.base.BaseActivity2;
 import com.rdc.shop.eshop.behavior.LoginAnimator;
 import com.rdc.shop.eshop.contract.ILoginContract;
 import com.rdc.shop.eshop.presenter.LoginPresenterImpl;
@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class LoginActivity extends BaseActivity implements ILoginContract.View {
+public class LoginActivity extends BaseActivity2 implements ILoginContract.View {
 
     @BindView(R.id.iv_close)
     ImageView mIvClose;

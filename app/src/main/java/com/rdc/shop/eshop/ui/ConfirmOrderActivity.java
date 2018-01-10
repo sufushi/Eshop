@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import com.rdc.shop.eshop.R;
 import com.rdc.shop.eshop.adapter.ConfirmOrderRvAdapter;
-import com.rdc.shop.eshop.base.BaseActivity;
+import com.rdc.shop.eshop.base.BaseActivity2;
 import com.rdc.shop.eshop.base.BasePopupWindow;
 import com.rdc.shop.eshop.bean.Address;
 import com.rdc.shop.eshop.bean.Good;
@@ -31,6 +31,7 @@ import com.rdc.shop.eshop.contract.IUploadBatchContract;
 import com.rdc.shop.eshop.presenter.GetAddressPresenterImpl;
 import com.rdc.shop.eshop.presenter.UploadBatchPresenterImpl;
 import com.rdc.shop.eshop.utils.PopupWindowUtil;
+import com.rdc.shop.eshop.utils.ProgressDialogUtil;
 import com.rdc.shop.eshop.view.PayFragment;
 import com.rdc.shop.eshop.view.PayPwdView;
 import com.weigan.loopview.LoopView;
@@ -43,7 +44,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobUser;
 
-public class ConfirmOrderActivity extends BaseActivity implements IGetAddressContract.View,
+public class ConfirmOrderActivity extends BaseActivity2 implements IGetAddressContract.View,
         BasePopupWindow.ViewInterface, IUploadBatchContract.View, PayPwdView.InputCallBack {
 
     @BindView(R.id.tb_title)
@@ -95,6 +96,7 @@ public class ConfirmOrderActivity extends BaseActivity implements IGetAddressCon
         mConfirmOrderRvAdapter.appendData(mGoodList);
         mGetAddressPresenter = new GetAddressPresenterImpl(this);
         mUploadBatchPresenter = new UploadBatchPresenterImpl(this);
+
     }
 
     @Override
@@ -252,7 +254,6 @@ public class ConfirmOrderActivity extends BaseActivity implements IGetAddressCon
                 PopupWindowUtil.getInstance().dismiss();
                 Bundle bundle = new Bundle();
                 bundle.putString(PayFragment.EXTRA_CONTENT, "支付：¥ " + mTotalPrice);
-
                 mPayFragment = new PayFragment();
                 mPayFragment.setArguments(bundle);
                 mPayFragment.setPaySuccessCallBack(ConfirmOrderActivity.this);
@@ -289,6 +290,9 @@ public class ConfirmOrderActivity extends BaseActivity implements IGetAddressCon
             mPayFragment.dismiss();
         }
         showToast(response);
+        ProgressDialogUtil.dismiss();
+        setResult(RESULT_OK);
+        finish();
     }
 
     @Override
@@ -297,10 +301,12 @@ public class ConfirmOrderActivity extends BaseActivity implements IGetAddressCon
             mPayFragment.dismiss();
         }
         showToast(response);
+        ProgressDialogUtil.dismiss();
     }
 
     @Override
     public void onInputFinish(String result) {
+        ProgressDialogUtil.showLoadingDislog(this, "正在加载...");
         commitOrder();
     }
 }

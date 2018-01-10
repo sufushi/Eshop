@@ -112,4 +112,6 @@
     <string name="string_confirm_pay">确认支付</string>
     <string name="string_order_number">订单编号</string>
     <string name="string_input_pay_password">请输入交易密码</string>
+    <string name="string_please_input">请输入搜索内容</string>
+    <string name="string_loading">正在加载...</string>
 </resources>

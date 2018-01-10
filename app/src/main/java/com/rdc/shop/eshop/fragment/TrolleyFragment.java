@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
+import android.util.ArraySet;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -19,25 +21,34 @@ import com.rdc.shop.eshop.base.BaseFragment;
 import com.rdc.shop.eshop.bean.Good;
 import com.rdc.shop.eshop.bean.Shoppingcart;
 import com.rdc.shop.eshop.bean.entity.Store;
+import com.rdc.shop.eshop.contract.IDeleteBatchContract;
 import com.rdc.shop.eshop.contract.IGetShopingcartContract;
 import com.rdc.shop.eshop.listener.OnGroupEditInterface;
 import com.rdc.shop.eshop.listener.OnModifyCountInterface;
 import com.rdc.shop.eshop.listener.OnSelectInterface;
+import com.rdc.shop.eshop.presenter.DeleteBatchPresenterImpl;
 import com.rdc.shop.eshop.presenter.GetShoppingcartPresenterImpl;
 import com.rdc.shop.eshop.ui.ConfirmOrderActivity;
+import com.rdc.shop.eshop.utils.ProgressDialogUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobUser;
 
-public class TrolleyFragment extends BaseFragment implements OnSelectInterface, OnModifyCountInterface, OnGroupEditInterface, IGetShopingcartContract.View {
+import static android.app.Activity.RESULT_OK;
+
+public class TrolleyFragment extends BaseFragment implements OnSelectInterface,
+        OnModifyCountInterface, OnGroupEditInterface, IGetShopingcartContract.View,
+        IDeleteBatchContract.View {
 
     @BindView(R.id.tv_title)
     TextView mTvTitle;
@@ -62,16 +73,20 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
     @BindView(R.id.ll_share)
     LinearLayout mLlShare;
 
+    private static final int REQUEST_CODE_PAY = 0;
+
     private String mTitle;
     private float mTotalPrice;
     private int mTotalCount;
     private int mFlag;
+    private Set<String> mPayedGoodSet;
     private List<Shoppingcart> mShoppingcartList;
     private List<Store> mStoreList;
     private Map<Integer, List<Good>> mGoodListMap;
     private TrolleyELAdapter mTrolleyELAdapter;
 
     private IGetShopingcartContract.Presenter mGetShoppingcartPresenter;
+    private IDeleteBatchContract.Presenter mDeleteBatchPresenter;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -100,6 +115,8 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
         mGetShoppingcartPresenter = new GetShoppingcartPresenterImpl(this);
         mGetShoppingcartPresenter.getShoppingcart(BmobUser.getCurrentUser().getObjectId());
         setParams(bundle);
+        mPayedGoodSet = new HashSet<>();
+        mDeleteBatchPresenter = new DeleteBatchPresenterImpl(this);
     }
 
     private void setParams(Bundle bundle) {
@@ -138,8 +155,8 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
                         break;
                 }
                 String size = String.valueOf(25 + new Random().nextInt(20));
-                goodList.add(new Good((long)i, imgUrls[i * j], mStoreList.get(i).getStoreName() + "第" + (j + 1) + "个商品",
-                        price, discountPrice, (long)count, color, size));
+                goodList.add(new Good((long) i, imgUrls[i * j], mStoreList.get(i).getStoreName() + "第" + (j + 1) + "个商品",
+                        price, discountPrice, (long) count, color, size));
             }
             mGoodListMap.put(mStoreList.get(i).getStoreId(), goodList);
         }
@@ -181,6 +198,9 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
     @Override
     public void onResume() {
         super.onResume();
+        if (mGetShoppingcartPresenter != null) {
+            mGetShoppingcartPresenter.getShoppingcart(BmobUser.getCurrentUser().getObjectId());
+        }
         setTitle();
     }
 
@@ -248,7 +268,7 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
     public void onIncrease(int groupPosition, int childPosition, View countView, boolean isSelected) {
         Good good = (Good) mTrolleyELAdapter.getChild(groupPosition, childPosition);
         int currentCount = good.getCount().intValue();
-        currentCount ++;
+        currentCount++;
         good.setCount((long) currentCount);
         ((EditText) countView).setText(String.valueOf(currentCount));
         mTrolleyELAdapter.notifyDataSetChanged();
@@ -262,7 +282,7 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
         if (currentCount == 1) {
             return;
         }
-        currentCount --;
+        currentCount--;
         good.setCount((long) currentCount);
         ((EditText) countView).setText(String.valueOf(currentCount));
         mTrolleyELAdapter.notifyDataSetChanged();
@@ -306,7 +326,7 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
             for (int j = 0; j < goodList.size(); j++) {
                 Good good = goodList.get(j);
                 if (good.getChoosed()) {
-                    mTotalCount ++;
+                    mTotalCount++;
                     mTotalPrice += good.getPrice() * good.getCount();
                 }
             }
@@ -406,13 +426,14 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
                             for (int i = 0; i < goods.size(); i++) {
                                 if (goods.get(i).getChoosed()) {
                                     goodList.add(goods.get(i));
+                                    mPayedGoodSet.add(goods.get(i).getObjectId());
                                 }
                             }
                         }
                         Intent intent = new Intent(mBaseActivity, ConfirmOrderActivity.class);
                         intent.putExtra("total_price", mTotalPrice);
                         intent.putExtra("goods", (Serializable) goodList);
-                        startActivity(intent);
+                        startActivityForResult(intent, REQUEST_CODE_PAY);
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -425,7 +446,9 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
     }
 
     @Override
-    public void onGetShopingcartSuccess(List<Store> storeList, Map<Integer, List<Good>> goodListMap) {
+    public void onGetShopingcartSuccess(List<Shoppingcart> shoppingcartList, List<Store> storeList,
+                                        Map<Integer, List<Good>> goodListMap) {
+        mShoppingcartList = shoppingcartList;
         mStoreList = storeList;
         mGoodListMap = goodListMap;
         if (goodListMap.size() > 0) {
@@ -439,15 +462,44 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface, 
         for (int i = 0; i < mTrolleyELAdapter.getGroupCount(); i++) {
             mElvGoods.expandGroup(i);
         }
-        if (goodListMap.size() > 0) {
-            View view = mBaseActivity.getLayoutInflater().inflate(R.layout.layout_elv_footer, null);
-            mElvGoods.addFooterView(view);
-        }
+//        if (goodListMap.size() > 0) {
+//            View view = mBaseActivity.getLayoutInflater().inflate(R.layout.layout_elv_footer, null);
+//            mElvGoods.addFooterView(view);
+//        }
         setTitle();
     }
 
     @Override
     public void onGetShoppingcartFailed(String response) {
         showToast(response);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CODE_PAY) {
+                List<Shoppingcart> shoppingcartList = new ArrayList<>();
+                for (Shoppingcart shoppingcart :
+                        mShoppingcartList) {
+                    if (mPayedGoodSet.contains(shoppingcart.getGood().getObjectId())) {
+                        shoppingcartList.add(shoppingcart);
+                    }
+                }
+                mDeleteBatchPresenter.deleteBatch(shoppingcartList);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onDeleteBatchSuccess(String response) {
+        Log.e("error", response);
+        mPayedGoodSet = new HashSet<>();
+//        mGetShoppingcartPresenter.getShoppingcart(BmobUser.getCurrentUser().getObjectId());
+    }
+
+    @Override
+    public void onDeleteBatchFailed(String response) {
+        Log.e("error", response);
     }
 }

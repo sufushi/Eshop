@@ -6,8 +6,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.rdc.shop.eshop.R;
@@ -22,13 +23,16 @@ import com.rdc.shop.eshop.listener.OnClickRecyclerViewListener;
 import com.rdc.shop.eshop.presenter.GetAdvertisementPresenterImpl;
 import com.rdc.shop.eshop.presenter.GetGoodListPresenterImpl;
 import com.rdc.shop.eshop.ui.GoodDetailActivity;
+import com.rdc.shop.eshop.ui.SearchGoodActivity;
 import com.rdc.shop.eshop.utils.DensityUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
@@ -44,6 +48,7 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
     RecyclerView mRvHome;
     @BindView(R.id.ptr_classic_frame_layout)
     PtrClassicFrameLayout mPtrClassicFrameLayout;
+    Unbinder unbinder;
 
     private List<GoodxShop> mGoodxShopList;
     private HomeRvAdapter mHomeRvAdapter;
@@ -155,7 +160,7 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
                 mPtrClassicFrameLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(mBaseActivity,"不要拉了，我没东西啦",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mBaseActivity, "不要拉了，我没东西啦", Toast.LENGTH_SHORT).show();
                         mPtrClassicFrameLayout.refreshComplete();
                     }
                 }, 1000);
@@ -230,5 +235,10 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
     @Override
     public void onGetGoodListFailed(String response) {
         showToast(response);
+    }
+
+    @OnClick(R.id.ll_search)
+    public void onViewClicked() {
+        startActivity(SearchGoodActivity.class);
     }
 }

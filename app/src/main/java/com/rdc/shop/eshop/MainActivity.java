@@ -5,8 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
 
-import com.rdc.shop.eshop.R;
-import com.rdc.shop.eshop.base.BaseActivity;
+import com.rdc.shop.eshop.base.BaseActivity2;
 import com.rdc.shop.eshop.fragment.ClassifyFragment;
 import com.rdc.shop.eshop.fragment.HomeFragment;
 import com.rdc.shop.eshop.fragment.PersonFragment;
@@ -15,7 +14,7 @@ import com.rdc.shop.eshop.fragment.TrolleyFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity2 {
 
     @BindView(R.id.tv_home)
     TextView mTvHome;

@@ -11,13 +11,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import butterknife.ButterKnife;
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
-
-public abstract class BaseActivity extends SwipeBackActivity {
+public abstract class BaseActivity2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,8 +21,6 @@ public abstract class BaseActivity extends SwipeBackActivity {
         setContentView(setLayoutResID());
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ButterKnife.bind(this);
-        SwipeBackLayout swipeBackLayout = getSwipeBackLayout();
-        swipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
         //initState();
         initData();
         initView();

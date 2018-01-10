@@ -1,6 +1,9 @@
 package com.rdc.shop.eshop.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;

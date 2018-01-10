@@ -60,7 +60,10 @@
         <activity android:name=".ui.PersonShopActivity"/>
         <activity android:name=".ui.AddOrEditShopActivity"/>
         <activity android:name=".ui.GoodDetailActivity"/>
-        <activity android:name=".ui.ConfirmOrderActivity"/>
+        <activity
+            android:name=".ui.ConfirmOrderActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.SearchGoodActivity"/>
     </application>
 
 </manifest>

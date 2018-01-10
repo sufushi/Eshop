@@ -55,7 +55,7 @@ public class GetShoppingcartModelImpl implements IGetShopingcartContract.Model {
                             storeList.add(new Store(shop.getId(), shop.getShopName()));
                         }
                     }
-                    presenter.onGetShopingcartSuccess(storeList, goodListMap);
+                    presenter.onGetShopingcartSuccess(list, storeList, goodListMap);
                 } else {
                     presenter.onGetShoppingcartFailed(e.getMessage());
                 }
