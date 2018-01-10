@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_good_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_toolbar_height"
+                android:layout_gravity="top"
+                android:background="@color/colorPrimary"
+                android:theme="@style/Theme.AppCompat.NoActionBar">
+
+            </android.support.v7.widget.Toolbar>
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_below="@+id/tb_title">
+
+            </com.youth.banner.Banner>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/banner"
+                android:background="@color/lightgray"/>
+
+            <TextView
+                android:id="@+id/tv_simple_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/banner"
+                android:layout_margin="4dp"
+                android:maxLines="3"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_text_size_middle"
+                tools:text="美的(Media) MB55V30 洗衣机全自动 小型家用波轮 5.5公斤"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_simple_detail"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/string_price"
+                android:textColor="@color/red"
+                android:textSize="@dimen/dimen_text_size_huge"/>
+
+            <TextView
+                android:id="@+id/tv_reduce_price_awake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/tv_price"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tv_simple_detail"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_btn"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/string_reduce_price_awake"
+                android:textColor="@color/red"
+                android:textSize="@dimen/dimen_text_size_small"/>
+
+            <View
+                android:id="@+id/v_line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/tv_price"
+                android:background="@color/lightgray"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_goods_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/v_line"
+                android:background="@color/whitesmoke">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <include layout="@layout/layout_good_details"/>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <include layout="@layout/layout_select_category"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_toolbar_height"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:background="@color/whitesmoke">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/lightgray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_store"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_store"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@null"/>
+
+            <ImageView
+                android:id="@+id/iv_interest"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_interest"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@null"/>
+
+            <ImageView
+                android:id="@+id/iv_trolley"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_trolley"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:id="@+id/tv_buy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_bg_ll_orange"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="@string/string_buy_soon"
+                android:textColor="@color/whitesmoke"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_add_to_trolley"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_bg_ll_red"
+                android:layout_weight="1"
+                android:text="@string/string_add_to_trolley"
+                android:textColor="@color/whitesmoke"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whitesmoke">
+
+        <CheckBox
+            android:id="@+id/cb_select_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="10dp"
+            android:button="@drawable/bg_checkbox"
+            android:gravity="center"
+            android:minHeight="38dp"
+            android:minWidth="32dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/cb_select_group"
+            android:gravity="center_vertical"
+            android:text="@string/store_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_middle"/>
+
+        <Button
+            android:id="@+id/btn_store_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="4dp"
+            android:textColor="@color/gray"
+            android:background="@null"
+            android:text="@string/string_edit"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

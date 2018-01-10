@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_toolbar_height"
+            android:background="@color/colorPrimary"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/string_shop_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_small"/>
+
+            <EditText
+                android:id="@+id/et_shop_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="6dp"
+                android:inputType="text"
+                android:lines="1"
+                android:textColorHint="@color/lightgray"
+                android:textSize="@dimen/dimen_text_size_tiny"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/string_contract_way"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_small"/>
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="6dp"
+                android:inputType="phone"
+                android:textColorHint="@color/lightgray"
+                android:textSize="@dimen/dimen_text_size_tiny"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/string_shop_description"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_small"/>
+
+            <EditText
+                android:id="@+id/et_shop_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="6dp"
+                android:inputType="text"
+                android:maxLines="10"
+                android:textColorHint="@color/lightgray"
+                android:textSize="@dimen/dimen_text_size_tiny"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_shop_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:text="@string/string_shop_category"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_small"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimen_text_size_small"
+                tools:text="美食餐饮"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/string_shop_logo"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_small"/>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/riv_add_shop_logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="6dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_add_photo"
+                app:riv_corner_radius="4dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="6dp">
+
+            <TextView
+                android:id="@+id/tv_add_shop_images"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:drawableEnd="@drawable/ic_take_photo"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"
+                android:text="@string/string_shop_images"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_small"/>
+
+            <com.jaeger.ninegridimageview.NineGridImageView
+                android:id="@+id/ngiv_shop_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                app:imgGap="4dp"
+                app:showStyle="grid"
+                app:singleImgSize="60dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/selector_btn_confirm"
+            android:text="@string/string_confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/selector_btn_delete"
+            android:text="@string/string_delete"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
+

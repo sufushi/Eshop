@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/rl_confirm_oder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_toolbar_height"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_commit_order"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tb_title"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:drawableStart="@drawable/ic_person_selected"
+                        android:gravity="center_vertical"
+                        android:text="@string/string_recipient"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen_text_size_small"/>
+
+                    <TextView
+                        android:id="@+id/tv_recipient_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:lines="1"
+                        android:maxLength="10"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/dimen_text_size_small"
+                        tools:text="-4"/>
+
+                    <TextView
+                        android:id="@+id/tv_recipient_contract"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/dimen_text_size_tiny"
+                        tools:text="15019754401"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_recipient_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:drawableStart="@drawable/ic_location"
+                        android:gravity="center_vertical"
+                        android:text="@string/string_person_place"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen_text_size_small"/>
+
+                    <TextView
+                        android:id="@+id/tv_recipient_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="6dp"
+                        android:maxLines="2"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/dimen_text_size_tiny"
+                        tools:text="广东省广州市番禺区小谷围街道大学城广东工业大学"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_good_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_toolbar_height"
+                android:background="@color/white"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_commit_order"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_toolbar_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/whitesmoke">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/tv_total_price"
+                android:text="@string/string_add_up"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_text_size_tiny"/>
+
+            <TextView
+                android:id="@+id/tv_total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="2dp"
+                android:text="@string/string_total_price"
+                android:textColor="@color/orangered"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_commit_order"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:background="@drawable/selector_bg_ll_orange"
+            android:gravity="center"
+            android:text="@string/string_commit_order"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

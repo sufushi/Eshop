@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/ptr_classic_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:divider="@null"
+            android:scrollbars="none">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_title"
+        style="@style/ToolbarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_toolbar_height"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <include layout="@layout/layout_search"/>
+
+    </android.support.v7.widget.Toolbar>
+
+</RelativeLayout>
+

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="advertisement_images">
+        <item>https://img11.360buyimg.com/da/jfs/t11530/24/2342987507/108553/3101df58/5a167b89Ncb75dd8d.jpg</item>
+        <item>https://img.alicdn.com/simba/img/TB1AOfdblfM8KJjSZFhSuwRyFXa.jpg</item>
+        <item>https://img1.360buyimg.com/da/jfs/t12907/19/928760999/199651/5e084764/5a168d74N86ace708.jpg</item>
+        <item>https://img13.360buyimg.com/da/jfs/t10267/274/1744712670/107853/e81bef25/59e5df38Na7b236a6.jpg</item>
+        <item>https://img14.360buyimg.com/babel/jfs/t13300/141/845448625/143235/267e3970/5a155b14Nee76ee43.jpg</item>
+        <item>https://img10.360buyimg.com/babel/jfs/t13492/191/649895584/92815/60c678f9/5a103b4cN513bc9d0.jpg</item>
+    </string-array>
+
+    <string-array name="advertisement_titles">
+        <item>标题1</item>
+        <item>标题2</item>
+        <item>标题3</item>
+        <item>标题4</item>
+        <item>标题5</item>
+        <item>标题6</item>
+    </string-array>
+
+    <string-array name="good_names">
+        <item>联想（ThinkPad）</item>
+        <item>蓝月亮</item>
+        <item>方太（FOTILE）风魔方</item>
+        <item>壳牌（Shell）合成机油</item>
+        <item>德国进口酸奶</item>
+    </string-array>
+
+    <integer-array name="good_prices">
+        <item>5287</item>
+        <item>94</item>
+        <item>4390</item>
+        <item>112</item>
+        <item>89</item>
+    </integer-array>
+
+    <string-array name="good_images">
+        <item>https://img14.360buyimg.com/n4/s130x130_jfs/t7552/242/3636271892/270172/192bae2b/59f7d75fN558c192d.jpg</item>
+        <item>https://img11.360buyimg.com/n4/s130x130_jfs/t8410/264/308143391/173690/b8929dbc/59a53c7bN29a97958.jpg</item>
+        <item>https://img14.360buyimg.com/n4/s130x130_jfs/t3829/28/266341330/206118/c8b81eb6/580c396dN149d462f.jpg</item>
+        <item>https://img11.360buyimg.com/n4/s130x130_jfs/t4693/148/156651117/154784/7c30b6e4/58caa356N33181668.jpg</item>
+        <item>https://img13.360buyimg.com/n4/s130x130_jfs/t3235/306/4690945160/515992/3d7d6b40/584e757aN8fd16830.jpg</item>
+    </string-array>
+
+    <string-array name="good_descriptions">
+        <item>E470c（20H3A001CD）14英寸笔记本电</item>
+        <item>洗衣液机洗+手洗套装（机洗2kg+1kg机洗袋*2）</item>
+        <item>全自动升级 侧吸式抽油烟机 JQ25TS</item>
+        <item>蓝喜力Helix HX7 5W-40 蓝壳 A3/B4 </item>
+        <item>德亚（Weidendorf）200ml*24</item>
+    </string-array>
+
+    <string-array name="trolley_good_image_urls">
+        <item>https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1674693703,2052887952&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2416989527,2540750896&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3693078486,2065141250&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=395040802,3069040454&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=583863857,3101574647&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2547513527,1006432586&amp;fm=27&amp;gp=0.jpg</item>
+    </string-array>
+
+    <string-array name="good_categories">
+        <item>服装配饰</item>
+        <item>鞋包手袋</item>
+        <item>手机数码</item>
+        <item>电脑办公</item>
+        <item>家用电器</item>
+        <item>食品生鲜</item>
+        <item>家居厨具</item>
+        <item>运动户外</item>
+        <item>生活旅游</item>
+        <item>图书音像</item>
+        <item>其他推荐</item>
+    </string-array>
+
+    <string-array name="visit_record">
+        <item>http://img3.imgtn.bdimg.com/it/u=987011704,1105122635&amp;fm=27&amp;gp=0.jpg</item>
+        <item>http://img1.imgtn.bdimg.com/it/u=1919310923,1970925386&amp;fm=27&amp;gp=0.jpg</item>
+        <item>http://img0.imgtn.bdimg.com/it/u=2677594999,635370845&amp;fm=27&amp;gp=0.jpg</item>
+        <item>http://img2.imgtn.bdimg.com/it/u=877158747,2523140633&amp;fm=27&amp;gp=0.jpg</item>
+        <item>http://img2.imgtn.bdimg.com/it/u=79799502,3070287230&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=395040802,3069040454&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=583863857,3101574647&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2547513527,1006432586&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1674693703,2052887952&amp;fm=27&amp;gp=0.jpg</item>
+        <item>https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2416989527,2540750896&amp;fm=27&amp;gp=0.jpg</item>
+    </string-array>
+
+    <string-array name="order_status">
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>全部</item>
+    </string-array>
+
+</resources>

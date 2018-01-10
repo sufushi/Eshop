@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whitesmoke">
+
+        <CheckBox
+            android:id="@+id/cb_select_child"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="10dp"
+            android:button="@drawable/bg_checkbox"
+            android:gravity="center"
+            android:minHeight="64dp"
+            android:minWidth="32dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/iv_good"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="13dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="13dp">
+
+            <TextView
+                android:id="@+id/tv_good_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/good_name"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_text_size_middle"/>
+
+            <TextView
+                android:id="@+id/tv_color_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text="@string/good_size"
+                android:textColor="@color/gray"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:text="@string/good_price"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/dimen_text_size_small"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_discount_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/tv_price"
+                    android:text="@string/string_discount_price"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/dimen_text_size_tiny"/>
+
+                <TextView
+                    android:id="@+id/tv_buy_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/string_buy_num"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/dimen_text_size_tiny"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/ll_change_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_reduce"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:background="@drawable/selector_reduce_num"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"/>
+
+                    <EditText
+                        android:id="@+id/et_num"
+                        android:layout_width="40dip"
+                        android:layout_height="26dip"
+                        android:layout_toEndOf="@id/btn_reduce"
+                        android:background="@drawable/ic_cart_count"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:text="@string/string_num"
+                        android:textColor="@color/grey"/>
+
+                    <Button
+                        android:id="@+id/btn_add"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_toEndOf="@id/et_num"
+                        android:background="@drawable/selector_plus_num"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_good_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/good_size"
+                    android:textColor="@color/gray"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_goods_delete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:background="@color/orange"
+                android:gravity="center"
+                android:text="@string/string_delete"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

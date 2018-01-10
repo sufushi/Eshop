@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nsv_other_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    app:behavior_peekHeight="35dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_third_party_login"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="?attr/selectableItemBackground"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/selector_arrow"
+            android:gravity="center"
+            android:text="@string/string_other_login"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:id="@+id/ll_other_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_qq_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:background="?attr/selectableItemBackground"
+                android:drawableTop="@drawable/ic_qq"
+                android:gravity="center"
+                android:text="@string/string_qq"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tv_wechat_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:background="?attr/selectableItemBackground"
+                android:drawableTop="@drawable/ic_wechat"
+                android:gravity="center"
+                android:text="@string/string_wechat"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tv_wei_blog_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:background="?attr/selectableItemBackground"
+                android:drawableTop="@drawable/ic_wei_blog"
+                android:gravity="center"
+                android:text="@string/string_wei_blog"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

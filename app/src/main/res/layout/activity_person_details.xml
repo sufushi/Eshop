@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_toolbar_height"
+        android:background="@color/colorPrimary"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <Button
+            android:id="@+id/btn_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/string_complete"
+            android:background="?attr/selectableItemBackground"
+            android:layout_gravity="end"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/rl_user_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:text="@string/string_user_icon"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <ImageView
+            android:id="@+id/iv_user_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:clickable="false"
+            android:scaleType="fitXY"
+            android:contentDescription="@null"
+            android:src="@drawable/logo"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_user_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:text="@string/string_phone_number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_user_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:textColor="@color/gray"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/dimen_text_size_tiny"
+            tools:text="15019754401"
+            android:maxLength="20"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_user_nik_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:text="@string/string_user_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_user_nik_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:textColor="@color/gray"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/dimen_text_size_tiny"
+            tools:text="-4"
+            android:maxLength="20"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_user_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:text="@string/string_user_password"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_user_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:textColor="@color/gray"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/dimen_text_size_tiny"
+            android:inputType="textPassword"
+            tools:text="123456"
+            android:maxLength="20"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_user_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:text="@string/string_user_sex"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_user_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:textColor="@color/gray"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/dimen_text_size_tiny"
+            tools:text="男"
+            android:maxLength="20"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_user_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:text="@string/string_location"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_user_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="14dp"
+            android:clickable="false"
+            android:textColor="@color/gray"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/dimen_text_size_tiny"
+            tools:text="广东 汕头"
+            android:maxLength="20"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+
+</LinearLayout>

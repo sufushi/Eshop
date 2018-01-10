@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_good_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="免运费"
+        android:maxLines="1"
+        android:textSize="@dimen/dimen_text_size_tiny"
+        android:textColor="@color/gray"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:drawablePadding="3dp"
+        android:drawableStart="@drawable/ic_circle_check"
+        android:layout_margin="2dp"/>
+
+</LinearLayout>

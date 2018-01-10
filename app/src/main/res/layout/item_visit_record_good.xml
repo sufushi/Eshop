@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="?attr/selectableItemBackground"
+              android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_good"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:contentDescription="@null"
+        android:padding="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/tv_good_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/good_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_text_size_big"/>
+
+    <TextView
+        android:id="@+id/tv_good_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/good_price"
+        android:textColor="@color/red"
+        android:textSize="@dimen/dimen_text_size_small"/>
+
+</LinearLayout>

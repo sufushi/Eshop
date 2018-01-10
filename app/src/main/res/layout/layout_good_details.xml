@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_below="@+id/rv_goods_label"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_select_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_margin="10dp"
+            android:clickable="false"
+            android:gravity="center_horizontal"
+            android:text="@string/string_has_selected"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_select_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:clickable="false"
+            android:maxLines="3"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"
+            tools:text="美的(Media) MB55V30 洗衣机全自动小型家用波轮 1件"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"/>
+
+    <LinearLayout
+        android:id="@+id/ll_select_place"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:text="@string/string_selected_place"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_select_place"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:clickable="false"
+            android:maxLines="3"
+            android:drawableStart="@drawable/ic_location"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"
+            android:gravity="center_vertical"
+            tools:text="中山大学南校区"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/lightgray"/>
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/rv_league_progress"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="4dp">-->
+
+    <!--</android.support.v7.widget.RecyclerView>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/string_description"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_text_size_middle"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/string_good_brand"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_brand"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/dimen_text_size_small"
+            tools:text="美的(Midea)"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/string_size"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_size"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/dimen_text_size_small"
+            tools:text="5.5公斤"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/string_version"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/dimen_text_size_small"
+            tools:text="MB55V30"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/lightgray"/>
+
+    <TextView
+        android:id="@+id/tv_concrete_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:maxLines="100"
+        android:textSize="@dimen/dimen_text_size_small"
+        android:textColor="@color/grey"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        tools:text="商品具体详情"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:text="@string/string_welcome_to_buy"
+        android:textSize="@dimen/dimen_text_size_middle"
+        android:textColor="@color/grey"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:drawablePadding="10dp"/>
+
+</LinearLayout>
