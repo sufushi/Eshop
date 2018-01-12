@@ -79,7 +79,7 @@ public class SearchGoodActivity extends BaseActivity implements IGetGoodListCont
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == event.KEYCODE_ENTER) {
                     mKeyWord = mEtSearchGood.getText().toString();
-                    mGetGoodListPresenter.getGoodList();
+                    mGetGoodListPresenter.getGoodList(false);
                 }
                 return false;
             }

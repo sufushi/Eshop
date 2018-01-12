@@ -225,7 +225,7 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
         GoodxShop goodxShop = new GoodxShop(null, mAdvertisement, 0);
         mGoodxShopList.add(goodxShop);
         mHomeRvAdapter.updataData(mGoodxShopList);
-        mGetGoodListPresenter.getGoodList();
+        mGetGoodListPresenter.getGoodList(true);
     }
 
     @Override

@@ -12,9 +12,11 @@ import cn.bmob.v3.listener.FindListener;
 public class GetGoodListModelImpl implements IGetGoodListContract.Model {
 
     @Override
-    public void getGoodList(final IGetGoodListContract.Presenter presenter) {
+    public void getGoodList(final IGetGoodListContract.Presenter presenter, boolean limit) {
         BmobQuery<Good> goodBmobQuery = new BmobQuery<>();
-        goodBmobQuery.setLimit(5);
+        if (limit) {
+            goodBmobQuery.setLimit(5);
+        }
         goodBmobQuery.findObjects(new FindListener<Good>() {
             @Override
             public void done(List<Good> list, BmobException e) {

@@ -17,8 +17,8 @@ public class GetGoodListPresenterImpl implements IGetGoodListContract.Presenter 
     }
 
     @Override
-    public void getGoodList() {
-        mModel.getGoodList(this);
+    public void getGoodList(boolean limit) {
+        mModel.getGoodList(this, limit);
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.List;
 public interface IGetGoodListContract {
 
     interface Model {
-        void getGoodList(Presenter presenter);
+        void getGoodList(Presenter presenter, boolean limit);
         void getGoodList(Presenter presenter, int skip);
     }
 
@@ -17,7 +17,7 @@ public interface IGetGoodListContract {
     }
 
     interface Presenter {
-        void getGoodList();
+        void getGoodList(boolean limit);
         void getGoodList(int skip);
         void onGetGoodListSuccess(List<Good> goodList);
         void onGetGoodListFailed(String response);
