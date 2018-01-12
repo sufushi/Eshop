@@ -1,7 +1,9 @@
 package com.rdc.shop.eshop;
 
+import android.Manifest;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,8 +14,14 @@ import com.rdc.shop.eshop.fragment.PersonFragment;
 import com.rdc.shop.eshop.fragment.TrolleyFragment;
 import com.rdc.shop.eshop.listener.OnTrolleyCallback;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 
 public class MainActivity extends BaseActivity2 implements OnTrolleyCallback{
 
@@ -41,6 +49,55 @@ public class MainActivity extends BaseActivity2 implements OnTrolleyCallback{
     protected void initData() {
         mFragmentManager = getSupportFragmentManager();
         mTvHome.performClick();
+//        HiPermission.create(getApplicationContext())
+//                .checkMutiPermission(new PermissionCallback() {
+//                    @Override
+//                    public void onClose() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFinish() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onDeny(String permission, int position) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onGuarantee(String permission, int position) {
+//
+//                    }
+//                });
+        List<PermissionItem> permissionItems = new ArrayList<>();
+//        permissionItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
+        permissionItems.add(new PermissionItem(Manifest.permission.READ_EXTERNAL_STORAGE, "存储", R.drawable.permission_ic_storage));
+        HiPermission.create(MainActivity.this)
+                .permissions(permissionItems)
+                .filterColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, getTheme()))
+                .checkMutiPermission(new PermissionCallback() {
+                    @Override
+                    public void onClose() {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onDeny(String permission, int position) {
+
+                    }
+
+                    @Override
+                    public void onGuarantee(String permission, int position) {
+
+                    }
+                });
     }
 
     @Override

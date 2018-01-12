@@ -1,9 +1,13 @@
 package com.rdc.shop.eshop.app;
 
 import android.app.Application;
+import android.os.Build;
+import android.os.StrictMode;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobConfig;
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
 
 import static com.rdc.shop.eshop.constant.Constant.APPID;
 
@@ -13,6 +17,10 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         initBmob();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+        }
     }
 
     private void initBmob() {
