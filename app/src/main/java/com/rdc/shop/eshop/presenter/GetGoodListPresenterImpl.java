@@ -22,6 +22,11 @@ public class GetGoodListPresenterImpl implements IGetGoodListContract.Presenter 
     }
 
     @Override
+    public void getGoodList(int skip) {
+        mModel.getGoodList(this, skip);
+    }
+
+    @Override
     public void onGetGoodListSuccess(List<Good> goodList) {
         mView.onGetGoodListSuccess(goodList);
     }

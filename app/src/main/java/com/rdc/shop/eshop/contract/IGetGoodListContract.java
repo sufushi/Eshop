@@ -8,6 +8,7 @@ public interface IGetGoodListContract {
 
     interface Model {
         void getGoodList(Presenter presenter);
+        void getGoodList(Presenter presenter, int skip);
     }
 
     interface View {
@@ -17,6 +18,7 @@ public interface IGetGoodListContract {
 
     interface Presenter {
         void getGoodList();
+        void getGoodList(int skip);
         void onGetGoodListSuccess(List<Good> goodList);
         void onGetGoodListFailed(String response);
     }

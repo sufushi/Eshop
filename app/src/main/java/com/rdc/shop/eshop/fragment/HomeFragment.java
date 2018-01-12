@@ -6,9 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.rdc.shop.eshop.R;
@@ -31,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.bmob.v3.exception.BmobException;
@@ -54,6 +51,7 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
     Unbinder unbinder;
 
     private static final int REQUEST_CODE_GOOD_DETAIL = 1;
+    private static final int REQUEST_CODE_GOOD_SEARCH = 2;
 
     private List<GoodxShop> mGoodxShopList;
     private HomeRvAdapter mHomeRvAdapter;
@@ -68,6 +66,8 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
     private GetGoodListPresenterImpl mGetGoodListPresenter;
 
     private OnTrolleyCallback mOnTrolleyCallback;
+
+    private boolean mIsLoading;
 
     public static HomeFragment newInstance(String title) {
         HomeFragment homeFragment = new HomeFragment();
@@ -84,6 +84,8 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
 
     @Override
     protected void initData(Bundle bundle) {
+        mGoodList = new ArrayList<>();
+        mIsLoading = false;
         mOnTrolleyCallback = (OnTrolleyCallback) mBaseActivity;
         mScrollDistance = 0;
         mGoodxShopList = new ArrayList<>();
@@ -165,15 +167,18 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
 
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-                mPtrClassicFrameLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(mBaseActivity, "不要拉了，我没东西啦", Toast.LENGTH_SHORT).show();
-                        mPtrClassicFrameLayout.refreshComplete();
-                    }
-                }, 1000);
+//                mPtrClassicFrameLayout.postDelayed(
+//                        new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                Toast.makeText(mBaseActivity, "不要拉了，我没东西啦", Toast.LENGTH_SHORT).show();
+//                                mPtrClassicFrameLayout.refreshComplete();
+//                            }
+//                        }, 1000);
+                mIsLoading = true;
+                int skip = mGoodList.size();
+                mGetGoodListPresenter.getGoodList(skip);
             }
-
 
         });
         mRvHome.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -206,7 +211,6 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
         GoodxShop goodxShop = mGoodxShopList.get(position);
         Intent intent = new Intent(mBaseActivity, GoodDetailActivity.class);
         intent.putExtra("good", goodxShop.getGood());
-//        intent.putStringArrayListExtra("imageList", (ArrayList<String>) goodxShop.getGood().getGoodImageList());
         startActivityForResult(intent, REQUEST_CODE_GOOD_DETAIL);
     }
 
@@ -231,7 +235,13 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
 
     @Override
     public void onGetGoodListSuccess(List<Good> goodList) {
-        mGoodList = goodList;
+        if (mIsLoading) {
+            mGoodList.addAll(goodList);
+            mIsLoading = false;
+            mPtrClassicFrameLayout.refreshComplete();
+        } else {
+            mGoodList = goodList;
+        }
         for (Good good :
                 goodList) {
             GoodxShop goodxShop = new GoodxShop(good, null, 1);
@@ -247,13 +257,14 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
 
     @OnClick(R.id.ll_search)
     public void onViewClicked() {
-        startActivity(SearchGoodActivity.class);
+        Intent intent = new Intent(mBaseActivity, SearchGoodActivity.class);
+        startActivityForResult(intent, REQUEST_CODE_GOOD_SEARCH);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_CODE_GOOD_DETAIL) {
+            if (requestCode == REQUEST_CODE_GOOD_DETAIL || requestCode == REQUEST_CODE_GOOD_SEARCH) {
                 String tab = data.getStringExtra("tab");
                 if (tab != null && "trolley".equals(tab)) {
                     mOnTrolleyCallback.onTrolley();
