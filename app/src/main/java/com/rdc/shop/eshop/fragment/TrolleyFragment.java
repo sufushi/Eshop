@@ -495,7 +495,7 @@ public class TrolleyFragment extends BaseFragment implements OnSelectInterface,
     public void onDeleteBatchSuccess(String response) {
         Log.e("error", response);
         mPayedGoodSet = new HashSet<>();
-//        mGetShoppingcartPresenter.getShoppingcart(BmobUser.getCurrentUser().getObjectId());
+        mGetShoppingcartPresenter.getShoppingcart(BmobUser.getCurrentUser().getObjectId());
     }
 
     @Override

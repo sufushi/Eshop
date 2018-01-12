@@ -20,6 +20,7 @@ import com.rdc.shop.eshop.bean.GoodxShop;
 import com.rdc.shop.eshop.contract.IGetAdvertisementContract;
 import com.rdc.shop.eshop.contract.IGetGoodListContract;
 import com.rdc.shop.eshop.listener.OnClickRecyclerViewListener;
+import com.rdc.shop.eshop.listener.OnTrolleyCallback;
 import com.rdc.shop.eshop.presenter.GetAdvertisementPresenterImpl;
 import com.rdc.shop.eshop.presenter.GetGoodListPresenterImpl;
 import com.rdc.shop.eshop.ui.GoodDetailActivity;
@@ -40,6 +41,8 @@ import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.header.StoreHouseHeader;
 
+import static android.app.Activity.RESULT_OK;
+
 public class HomeFragment extends BaseFragment implements OnClickRecyclerViewListener, IGetAdvertisementContract.View, IGetGoodListContract.View {
 
     @BindView(R.id.tb_title)
@@ -49,6 +52,8 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
     @BindView(R.id.ptr_classic_frame_layout)
     PtrClassicFrameLayout mPtrClassicFrameLayout;
     Unbinder unbinder;
+
+    private static final int REQUEST_CODE_GOOD_DETAIL = 1;
 
     private List<GoodxShop> mGoodxShopList;
     private HomeRvAdapter mHomeRvAdapter;
@@ -61,6 +66,8 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
 
     private GetAdvertisementPresenterImpl mGetAdvertisementPresenter;
     private GetGoodListPresenterImpl mGetGoodListPresenter;
+
+    private OnTrolleyCallback mOnTrolleyCallback;
 
     public static HomeFragment newInstance(String title) {
         HomeFragment homeFragment = new HomeFragment();
@@ -77,6 +84,7 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
 
     @Override
     protected void initData(Bundle bundle) {
+        mOnTrolleyCallback = (OnTrolleyCallback) mBaseActivity;
         mScrollDistance = 0;
         mGoodxShopList = new ArrayList<>();
         mHomeRvAdapter = new HomeRvAdapter(mBaseActivity);
@@ -199,7 +207,7 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
         Intent intent = new Intent(mBaseActivity, GoodDetailActivity.class);
         intent.putExtra("good", goodxShop.getGood());
 //        intent.putStringArrayListExtra("imageList", (ArrayList<String>) goodxShop.getGood().getGoodImageList());
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_GOOD_DETAIL);
     }
 
     @Override
@@ -240,5 +248,18 @@ public class HomeFragment extends BaseFragment implements OnClickRecyclerViewLis
     @OnClick(R.id.ll_search)
     public void onViewClicked() {
         startActivity(SearchGoodActivity.class);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CODE_GOOD_DETAIL) {
+                String tab = data.getStringExtra("tab");
+                if (tab != null && "trolley".equals(tab)) {
+                    mOnTrolleyCallback.onTrolley();
+                }
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

@@ -12,8 +12,10 @@ import com.rdc.shop.eshop.R;
 import com.rdc.shop.eshop.adapter.InterestCardRvAdapter;
 import com.rdc.shop.eshop.base.BaseActivity;
 import com.rdc.shop.eshop.bean.Good;
+import com.rdc.shop.eshop.contract.IGetPersonInterestContract;
 import com.rdc.shop.eshop.decorator.SpaceItemDecoration;
 import com.rdc.shop.eshop.listener.OnClickRecyclerViewListener;
+import com.rdc.shop.eshop.presenter.GetPersonInterestPresenterImpl;
 import com.view.jameson.library.CardScaleHelper;
 
 import java.util.ArrayList;
@@ -23,8 +25,9 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bmob.v3.BmobUser;
 
-public class PersonInterestActivity extends BaseActivity implements OnClickRecyclerViewListener {
+public class PersonInterestActivity extends BaseActivity implements OnClickRecyclerViewListener, IGetPersonInterestContract.View {
 
     @BindView(R.id.tb_title)
     Toolbar mTbTitle;
@@ -35,6 +38,8 @@ public class PersonInterestActivity extends BaseActivity implements OnClickRecyc
     private List<String> mImageUrls;
     private InterestCardRvAdapter mInterestCardRvAdapter;
 
+    private IGetPersonInterestContract.Presenter mGetPersonInterestPresenter;
+
     @Override
     protected int setLayoutResID() {
         return R.layout.activity_person_interest;
@@ -42,25 +47,27 @@ public class PersonInterestActivity extends BaseActivity implements OnClickRecyc
 
     @Override
     protected void initData() {
-        String[] urls = getResources().getStringArray(R.array.visit_record);
-        mImageUrls = Arrays.asList(urls);
-        mGoodList = new ArrayList<>();
-        for (int i = 0; i < mImageUrls.size(); i++) {
-            float price = new Random().nextInt(400) + 2.0f;
-            Good good = new Good();
-            good.setGoodName("商品" + i);
-            good.setPrice(price);
-            good.setGoodIcon(mImageUrls.get(i));
-            mGoodList.add(good);
-        }
+//        String[] urls = getResources().getStringArray(R.array.visit_record);
+//        mImageUrls = Arrays.asList(urls);
+//        mGoodList = new ArrayList<>();
+//        for (int i = 0; i < mImageUrls.size(); i++) {
+//            float price = new Random().nextInt(400) + 2.0f;
+//            Good good = new Good();
+//            good.setGoodName("商品" + i);
+//            good.setPrice(price);
+//            good.setGoodIcon(mImageUrls.get(i));
+//            mGoodList.add(good);
+//        }
         mInterestCardRvAdapter = new InterestCardRvAdapter(this);
-        mInterestCardRvAdapter.appendData(mGoodList);
+//        mInterestCardRvAdapter.appendData(mGoodList);
         mInterestCardRvAdapter.setOnRecyclerViewListener(this);
         mRvInterest.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         mRvInterest.addItemDecoration(new SpaceItemDecoration(10));
         mRvInterest.setItemAnimator(new DefaultItemAnimator());
         mRvInterest.setAdapter(mInterestCardRvAdapter);
         new CardScaleHelper().attachToRecyclerView(mRvInterest);
+        mGetPersonInterestPresenter = new GetPersonInterestPresenterImpl(this);
+        mGetPersonInterestPresenter.getPersonInterest(BmobUser.getCurrentUser().getObjectId());
     }
 
     @Override
@@ -97,5 +104,15 @@ public class PersonInterestActivity extends BaseActivity implements OnClickRecyc
     public boolean onItemLongClick(int position) {
         Log.e("error", "onItemLongClick" + position);
         return false;
+    }
+
+    @Override
+    public void onGetPersonInterestSuccess(List<Good> goodList) {
+        mInterestCardRvAdapter.updataData(goodList);
+    }
+
+    @Override
+    public void onGetPersonInterestFailed(String response) {
+        Log.e("error", response);
     }
 }

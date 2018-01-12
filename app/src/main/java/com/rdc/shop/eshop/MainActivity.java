@@ -10,11 +10,12 @@ import com.rdc.shop.eshop.fragment.ClassifyFragment;
 import com.rdc.shop.eshop.fragment.HomeFragment;
 import com.rdc.shop.eshop.fragment.PersonFragment;
 import com.rdc.shop.eshop.fragment.TrolleyFragment;
+import com.rdc.shop.eshop.listener.OnTrolleyCallback;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity2 {
+public class MainActivity extends BaseActivity2 implements OnTrolleyCallback{
 
     @BindView(R.id.tv_home)
     TextView mTvHome;
@@ -126,5 +127,10 @@ public class MainActivity extends BaseActivity2 {
         if (mPersonFragment != null) {
             fragmentTransaction.hide(mPersonFragment);
         }
+    }
+
+    @Override
+    public void onTrolley() {
+        mTvTrolley.performClick();
     }
 }

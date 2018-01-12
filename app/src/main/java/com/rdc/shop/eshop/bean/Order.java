@@ -11,6 +11,7 @@ public class Order extends BmobObject{
     private String address;
     private String remark;
     private int state;
+    private Long count;
 
     public Order() {
 
@@ -78,6 +79,14 @@ public class Order extends BmobObject{
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 
     @Override

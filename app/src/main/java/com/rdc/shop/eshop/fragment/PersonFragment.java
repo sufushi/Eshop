@@ -15,8 +15,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.rdc.shop.eshop.R;
 import com.rdc.shop.eshop.base.BaseFragment;
+import com.rdc.shop.eshop.bean.Good;
 import com.rdc.shop.eshop.bean.User;
+import com.rdc.shop.eshop.contract.IGetPersonInterestContract;
 import com.rdc.shop.eshop.contract.IGetUserDetailContract;
+import com.rdc.shop.eshop.presenter.GetPersonInterestPresenterImpl;
 import com.rdc.shop.eshop.presenter.GetUserDetailPresenterImpl;
 import com.rdc.shop.eshop.ui.LoginActivity;
 import com.rdc.shop.eshop.ui.PersonAboutUsActivity;
@@ -30,6 +33,8 @@ import com.rdc.shop.eshop.ui.PersonSettingActivity;
 import com.rdc.shop.eshop.ui.PersonShopActivity;
 import com.rdc.shop.eshop.ui.PersonVisitRecordActivity;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,7 +42,7 @@ import butterknife.Unbinder;
 import cn.bmob.v3.BmobUser;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PersonFragment extends BaseFragment implements IGetUserDetailContract.View {
+public class PersonFragment extends BaseFragment implements IGetUserDetailContract.View, IGetPersonInterestContract.View {
 
     Unbinder unbinder;
     @BindView(R.id.civ_user_icon)
@@ -81,6 +86,7 @@ public class PersonFragment extends BaseFragment implements IGetUserDetailContra
     private User mUser;
 
     private GetUserDetailPresenterImpl mGetUserDetailPresenter;
+    private IGetPersonInterestContract.Presenter mGetPersonInterestPresenter;
 
     public static PersonFragment newInstance(String title) {
         PersonFragment homeFragment = new PersonFragment();
@@ -98,6 +104,8 @@ public class PersonFragment extends BaseFragment implements IGetUserDetailContra
     @Override
     protected void initData(Bundle bundle) {
         mGetUserDetailPresenter = new GetUserDetailPresenterImpl(this);
+        mGetPersonInterestPresenter = new GetPersonInterestPresenterImpl(this);
+        mGetPersonInterestPresenter.getPersonInterest(BmobUser.getCurrentUser().getObjectId());
         setParams(bundle);
     }
 
@@ -223,5 +231,16 @@ public class PersonFragment extends BaseFragment implements IGetUserDetailContra
     @Override
     public void onGetUserDetailFailed(String response) {
         showToast(response);
+    }
+
+    @Override
+    public void onGetPersonInterestSuccess(List<Good> goodList) {
+        String number = goodList.size() + "个";
+        mTvInterestNum.setText(number);
+    }
+
+    @Override
+    public void onGetPersonInterestFailed(String response) {
+
     }
 }

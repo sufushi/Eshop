@@ -26,6 +26,7 @@ import com.rdc.shop.eshop.R;
 import com.rdc.shop.eshop.adapter.GoodLabelRvAdapter;
 import com.rdc.shop.eshop.base.BaseActivity;
 import com.rdc.shop.eshop.bean.Address;
+import com.rdc.shop.eshop.bean.Collection;
 import com.rdc.shop.eshop.bean.Good;
 import com.rdc.shop.eshop.bean.Shoppingcart;
 import com.rdc.shop.eshop.contract.IGetAddressContract;
@@ -108,6 +109,7 @@ public class GoodDetailActivity extends BaseActivity implements OnBannerListener
     private List<String> mPlaceList;
     private GetAddressPresenterImpl mGetAddressPresenter;
     private UploadPresenterImpl<Shoppingcart> mShoppingcartUploadPresenter;
+    private UploadPresenterImpl<Collection> mCollectionUploadPresenter;
     //    private List<GoodCategory> mCategoryList;
 //    private GoodCategoryRvAdapter mGoodCategoryRvAdapter;
     private Map<String, Integer> mCategoryMap;
@@ -137,6 +139,7 @@ public class GoodDetailActivity extends BaseActivity implements OnBannerListener
         mTvSelectCategory.setText("选择商品种类");
         mGetAddressPresenter = new GetAddressPresenterImpl(this);
         mShoppingcartUploadPresenter = new UploadPresenterImpl<>(this);
+        mCollectionUploadPresenter = new UploadPresenterImpl<>(this);
 //        mTvSimpleDetail.setText("美的(Media) MB55V30 洗衣机全自动 小型家用波轮 5.5公斤");
 //        mTvSelectCategory.setText("美的(Media) MB55V30 洗衣机全自动小型家用波轮 1件");
 //        SharedPreferences place = getSharedPreferences("sp_place", MODE_PRIVATE);
@@ -229,7 +232,7 @@ public class GoodDetailActivity extends BaseActivity implements OnBannerListener
 
     @OnClick({R.id.tv_reduce_price_awake, R.id.ll_select_category, R.id.ll_select_place,
             R.id.ib_select_category_close, R.id.tv_select_category_confirm, R.id.btn_reduce, R.id.btn_add,
-            R.id.tv_buy, R.id.tv_add_to_trolley})
+            R.id.tv_buy, R.id.tv_add_to_trolley, R.id.iv_store, R.id.iv_interest, R.id.iv_trolley})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_reduce_price_awake:
@@ -261,6 +264,20 @@ public class GoodDetailActivity extends BaseActivity implements OnBannerListener
                 shoppingcart.setGood(mGood);
                 shoppingcart.setCount(1);
                 mShoppingcartUploadPresenter.upload(shoppingcart);
+                break;
+            case R.id.iv_store:
+                break;
+            case R.id.iv_interest:
+                Collection collection = new Collection();
+                collection.setUserId(BmobUser.getCurrentUser().getObjectId());
+                collection.setGood(mGood);
+                mCollectionUploadPresenter.upload(collection);
+                break;
+            case R.id.iv_trolley:
+                Intent intent = new Intent();
+                intent.putExtra("tab", "trolley");
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
             default:
                 break;

@@ -279,6 +279,7 @@ public class ConfirmOrderActivity extends BaseActivity2 implements IGetAddressCo
             order.setGood(mGoodList.get(i));
             order.setOrderNumber(mOrderNumber + i);
             order.setState(0);
+            order.setCount(mGoodList.get(i).getCount());
             orderList.add(order);
         }
         mUploadBatchPresenter.uploadBatch(orderList);

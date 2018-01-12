@@ -88,10 +88,10 @@
     </string-array>
 
     <string-array name="order_status">
+        <item>全部</item>
         <item>待付款</item>
         <item>待发货</item>
         <item>待收货</item>
-        <item>全部</item>
     </string-array>
 
 </resources>

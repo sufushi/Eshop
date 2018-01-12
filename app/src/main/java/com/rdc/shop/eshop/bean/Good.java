@@ -215,4 +215,6 @@ public class Good extends BmobObject implements Serializable{
                 ", discountPrice=" + discountPrice +
                 '}';
     }
+
+
 }
